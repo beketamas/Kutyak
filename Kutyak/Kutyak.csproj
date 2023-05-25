@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <Folder Include="Adatok\" />
+    <Folder Include="Adatok\" />
   </ItemGroup>
 
 </Project>

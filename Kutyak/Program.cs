@@ -1,4 +1,8 @@
-﻿namespace Kutyak
+﻿using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+using System.Text.RegularExpressions;
+
+namespace Kutyak
 {
     internal class Program
     {
@@ -24,9 +28,14 @@
             Console.WriteLine($"7. feladat: Legidősebb kutya neve és fajtája: {nev}, {fajta}");
 
             //8. feladat
-            var id_lista = kutyak.Count(x => x.Utolso_orvosi == "2018.01.10");
+            var id_lista = kutyak.Where(x => Regex.IsMatch(x.Utolso_orvosi,"2018.01.10"));
+
+            //9. feladat
+            var orvosi_idopont_lista = kutyak.GroupBy(x => x.Utolso_orvosi).OrderByDescending(x => x.Count()).ToList().First();
+            Console.WriteLine($"9. feladat: Legjobban leterhelt nap: {orvosi_idopont_lista.Key}: {orvosi_idopont_lista.Count()}");
 
 
+            //10. feladat
 
 
         }
